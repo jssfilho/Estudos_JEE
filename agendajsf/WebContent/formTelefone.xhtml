@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:body>
+		<h1>Cadastrar Telefone</h1>
+		<h:form>
+			<fieldset>
+				<legend>Dados do Telefone</legend>
+				<h:panelGrid columns="2">
+					
+					<h:outputLabel value="DDD:" for="ddd" />
+					<h:inputText required="true" requiredMessage="DDD Obrigatorio" id="ddd" value="#{telefoneBean.telefone.ddd}" >
+						<f:validateLength maximum="2" />
+					</h:inputText>
+					
+					<h:outputLabel value="Numero:" for="numero" />
+					<h:inputText id="numero" value="#{telefoneBean.telefone.numero}"  required="true" requiredMessage="Numero Obrigatorio">
+						<f:validateLength maximum="9" />
+					</h:inputText>
+					<h:outputLabel value="Selecione a Pessoa Referente ao Telefone:" for="pessoa" />
+					<h:selectOneMenu value="#{telefoneBean.pessoaId}" id="pessoa">
+						<f:selectItems value="#{telefoneBean.pessoas}" var="pessoa"
+						itemLabel="#{pessoa.nome}" itemValue="#{pessoa.id}" />
+					</h:selectOneMenu>
+					
+					<h:commandButton value="Gravar" action="#{telefoneBean.create}" />
+				</h:panelGrid>
+				<a href="/agendajsf/">Voltar</a>
+			</fieldset>
+		</h:form>
+	</h:body>
+
+</html>

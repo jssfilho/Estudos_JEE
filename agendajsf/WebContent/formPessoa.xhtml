@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:body>
+		<h1>Nova Pessoa</h1>
+		<h:form>
+			<fieldset>
+				<legend>Dados da Pessoa</legend>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome:" for="nome" />
+					<h:inputText requiredMessage="Nome Obrigatorio" required="true" id="nome" value="#{pessoaBean.pessoa.nome}">
+					<f:validateLength maximum="30" />
+					</h:inputText>
+						
+					 
+					
+					
+					<h:outputLabel value="Data de Nascimento:" for="data_nascimento" />
+					
+					<h:inputText requiredMessage="Data de Nascimento Obrigatorio" required="true"  id="data_nascimento"
+						value="#{pessoaBean.pessoa.data_nascimento}">  
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_Paulo" />
+					 </h:inputText>
+					
+					<h:outputLabel value="Gênero:" for="genero" />
+					<h:selectOneMenu value = "#{pessoaBean.pessoa.genero}" required="true" requiredMessage="DDD Obrigatorio"> 
+						<f:selectItem itemValue = "MASCULINO" itemLabel = "Masculino" /> 
+						<f:selectItem itemValue = "FEMININO" itemLabel = "Feminino" />
+						<f:selectItem itemValue = "OUTRO" itemLabel = "Outro" /> 
+					</h:selectOneMenu> 
+					
+					<h:commandButton value="Gravar" action="#{pessoaBean.create}" />
+				</h:panelGrid>
+			</fieldset>
+		</h:form>
+		<a href="/agendajsf/">Voltar</a>
+	</h:body>
+
+</html>
